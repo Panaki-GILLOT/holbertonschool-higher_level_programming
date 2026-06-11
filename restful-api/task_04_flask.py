@@ -34,6 +34,8 @@ def add_user():
     if not body or "username" not in body:
         return jsonify({"error": "Username is required"}), 400
     username = body["username"]
+    if username in users:
+        return jsonify({"error": "User already exists"}), 409
     users[username] = {
         "username": username,
         "name": body.get("name", ""),
