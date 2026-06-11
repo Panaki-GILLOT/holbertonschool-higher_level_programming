@@ -19,7 +19,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             }
             self._send_json(200, payload)
         else:
-            self._send_json(404, {"error": "Endpoint not found"})
+            self._send_text(404, "Endpoint not found")
 
     def _send_text(self, code, message):
         self.send_response(code)
